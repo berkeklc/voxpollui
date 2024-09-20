@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:voxpollui/features/onboarding/mixin/onboard_mixin.dart';
+import 'package:voxpollui/features/onboarding/view/onboard_iki.dart';
 import 'package:voxpollui/product/constants/font_constants.dart';
 import 'package:voxpollui/product/localization/locale_keys.g.dart';
 
@@ -52,12 +53,12 @@ class _OnboardViewState extends State<OnboardView> with OnboardMixin {
                       top: 115,
                       child: GestureDetector(
                         onTap: () {
-                          /*
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const BoardinIki()));
-                                    */
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const BoardinIki(),
+                            ),
+                          );
                         },
                         child: const Icon(
                           Icons.arrow_forward,
