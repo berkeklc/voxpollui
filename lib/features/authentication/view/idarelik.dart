@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:voxpollui/features/authentication/view/boardin_dort.dart';
 import 'package:voxpollui/product/constants/color_constants.dart';
 import 'package:voxpollui/product/constants/font_constants.dart';
 
@@ -144,8 +145,10 @@ class _BoardinUcState extends State<BoardinUc> {
             alignment: Alignment.bottomCenter,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SizedBox()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BoardinDort()),
+                );
               },
               child: Container(
                 alignment: Alignment.bottomCenter,
