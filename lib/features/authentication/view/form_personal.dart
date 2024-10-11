@@ -56,202 +56,204 @@ class _FormPersonalState extends State<FormPersonal> {
         valueListenable: isLoadingNotifier,
         builder: (_, isLoading, __) {
           if (isLoading) return const SizedBox.shrink();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: WidgetSizes.x4L),
-              Text(
-                LocaleKeys.auth_personalForm_personalInfo.tr(),
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: FontConstants.gilroyBold,
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: WidgetSizes.x4L),
+                Text(
+                  LocaleKeys.auth_personalForm_personalInfo.tr(),
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: FontConstants.gilroyBold,
+                  ),
                 ),
-              ),
-              Text(LocaleKeys.auth_personalForm_subtitle.tr()),
-              Text(LocaleKeys.auth_personalForm_subtitle2.tr()),
-              RegisterTextField(
-                label: LocaleKeys.auth_name,
-                controller: nameController,
-              ),
-              RegisterTextField(
-                label: LocaleKeys.auth_surname,
-                controller: surnameController,
-              ),
-              RegisterTextField(
-                label: LocaleKeys.auth_userName,
-                controller: userNameController,
-              ),
-              RegisterTextField(
-                label: LocaleKeys.auth_email,
-                controller: emailController,
-              ),
-              DateField((date) => dateOfBirth = date),
-              CustomDropdown<ProvinceModel>.search(
-                onChanged: (value) {
-                  if (value == null) return;
-                  selectedProvince = value;
-                  selectedDistrict = null;
-                  setState(() => districts = value.districts);
-                },
-                items: provinces,
-                initialItem: selectedProvince,
-                listItemPadding: EdgeInsets.zero,
-                itemsListPadding: EdgeInsets.zero,
-                expandedHeaderPadding: EdgeInsets.zero,
-                closedHeaderPadding: EdgeInsets.zero,
-                hintText: LocaleKeys.auth_province.tr(),
-                searchHintText: LocaleKeys.base_search.tr(),
-                canCloseOutsideBounds: false,
-                noResultFoundText:
-                    LocaleKeys.auth_personalForm_provinceNotFound.tr(),
-                hintBuilder: (_, text, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                Text(LocaleKeys.auth_personalForm_subtitle.tr()),
+                Text(LocaleKeys.auth_personalForm_subtitle2.tr()),
+                RegisterTextField(
+                  label: LocaleKeys.auth_name,
+                  controller: nameController,
+                ),
+                RegisterTextField(
+                  label: LocaleKeys.auth_surname,
+                  controller: surnameController,
+                ),
+                RegisterTextField(
+                  label: LocaleKeys.auth_userName,
+                  controller: userNameController,
+                ),
+                RegisterTextField(
+                  label: LocaleKeys.auth_email,
+                  controller: emailController,
+                ),
+                DateField((date) => dateOfBirth = date),
+                CustomDropdown<ProvinceModel>.search(
+                  onChanged: (value) {
+                    if (value == null) return;
+                    selectedProvince = value;
+                    selectedDistrict = null;
+                    setState(() => districts = value.districts);
+                  },
+                  items: provinces,
+                  initialItem: selectedProvince,
+                  listItemPadding: EdgeInsets.zero,
+                  itemsListPadding: EdgeInsets.zero,
+                  expandedHeaderPadding: EdgeInsets.zero,
+                  closedHeaderPadding: EdgeInsets.zero,
+                  hintText: LocaleKeys.auth_province.tr(),
+                  searchHintText: LocaleKeys.base_search.tr(),
+                  canCloseOutsideBounds: false,
+                  noResultFoundText:
+                      LocaleKeys.auth_personalForm_provinceNotFound.tr(),
+                  hintBuilder: (_, text, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
                       ),
-                    ),
-                  );
-                },
-                headerBuilder: (_, item, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      item.name,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                listItemBuilder: (_, item, __, ___) {
-                  return ListTile(title: Text(item.name));
-                },
-              ),
-              CustomDropdown<DistrictModel>.search(
-                onChanged: (value) {
-                  if (value == null) return;
-                  selectedDistrict = value;
-                },
-                items: districts,
-                initialItem: selectedDistrict,
-                listItemPadding: EdgeInsets.zero,
-                itemsListPadding: EdgeInsets.zero,
-                expandedHeaderPadding: EdgeInsets.zero,
-                closedHeaderPadding: EdgeInsets.zero,
-                hintText: LocaleKeys.auth_district.tr(),
-                searchHintText: LocaleKeys.base_search.tr(),
-                noResultFoundText:
-                    LocaleKeys.auth_personalForm_districtNotFound.tr(),
-                hintBuilder: (_, text, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                    );
+                  },
+                  headerBuilder: (_, item, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
                       ),
-                    ),
-                  );
-                },
-                headerBuilder: (_, item, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      item.districtName,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                      child: Text(
+                        item.name,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                listItemBuilder: (_, item, __, ___) {
-                  return ListTile(title: Text(item.districtName));
-                },
-              ),
-              CustomDropdown<Gender>.search(
-                onChanged: (value) {
-                  if (value == null) return;
-                  selectedGender = value;
-                },
-                items: const [Gender.male, Gender.female],
-                listItemPadding: EdgeInsets.zero,
-                itemsListPadding: EdgeInsets.zero,
-                expandedHeaderPadding: EdgeInsets.zero,
-                closedHeaderPadding: EdgeInsets.zero,
-                hintText: LocaleKeys.auth_gender.tr(),
-                searchHintText: LocaleKeys.base_search.tr(),
-                noResultFoundText:
-                    LocaleKeys.auth_personalForm_districtNotFound.tr(),
-                hintBuilder: (_, text, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                    );
+                  },
+                  listItemBuilder: (_, item, __, ___) {
+                    return ListTile(title: Text(item.name));
+                  },
+                ),
+                CustomDropdown<DistrictModel>.search(
+                  onChanged: (value) {
+                    if (value == null) return;
+                    selectedDistrict = value;
+                  },
+                  items: districts,
+                  initialItem: selectedDistrict,
+                  listItemPadding: EdgeInsets.zero,
+                  itemsListPadding: EdgeInsets.zero,
+                  expandedHeaderPadding: EdgeInsets.zero,
+                  closedHeaderPadding: EdgeInsets.zero,
+                  hintText: LocaleKeys.auth_district.tr(),
+                  searchHintText: LocaleKeys.base_search.tr(),
+                  noResultFoundText:
+                      LocaleKeys.auth_personalForm_districtNotFound.tr(),
+                  hintBuilder: (_, text, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
                       ),
-                    ),
-                  );
-                },
-                headerBuilder: (_, item, __) {
-                  return Container(
-                    margin: PagePaddings.allS,
-                    padding: PagePaddings.verS,
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide()),
-                    ),
-                    child: Text(
-                      item.toText,
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 16,
-                        fontFamily: FontConstants.gilroyMedium,
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                listItemBuilder: (_, item, __, ___) {
-                  return ListTile(title: Text(item.toText));
-                },
-              ),
-              ExtendedElevatedButton(
-                onPressed: next,
-                text: LocaleKeys.base_next.tr(),
-              ),
-            ],
+                    );
+                  },
+                  headerBuilder: (_, item, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
+                      ),
+                      child: Text(
+                        item.districtName,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
+                      ),
+                    );
+                  },
+                  listItemBuilder: (_, item, __, ___) {
+                    return ListTile(title: Text(item.districtName));
+                  },
+                ),
+                CustomDropdown<Gender>.search(
+                  onChanged: (value) {
+                    if (value == null) return;
+                    selectedGender = value;
+                  },
+                  items: const [Gender.male, Gender.female],
+                  listItemPadding: EdgeInsets.zero,
+                  itemsListPadding: EdgeInsets.zero,
+                  expandedHeaderPadding: EdgeInsets.zero,
+                  closedHeaderPadding: EdgeInsets.zero,
+                  hintText: LocaleKeys.auth_gender.tr(),
+                  searchHintText: LocaleKeys.base_search.tr(),
+                  noResultFoundText:
+                      LocaleKeys.auth_personalForm_districtNotFound.tr(),
+                  hintBuilder: (_, text, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
+                      ),
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
+                      ),
+                    );
+                  },
+                  headerBuilder: (_, item, __) {
+                    return Container(
+                      margin: PagePaddings.allS,
+                      padding: PagePaddings.verS,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide()),
+                      ),
+                      child: Text(
+                        item.toText,
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontFamily: FontConstants.gilroyMedium,
+                        ),
+                      ),
+                    );
+                  },
+                  listItemBuilder: (_, item, __, ___) {
+                    return ListTile(title: Text(item.toText));
+                  },
+                ),
+                ExtendedElevatedButton(
+                  onPressed: next,
+                  text: LocaleKeys.base_next.tr(),
+                ),
+              ],
+            ),
           );
         },
       ),

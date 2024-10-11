@@ -32,37 +32,46 @@ class FormPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          Center(
-            child: Image.asset(ImageConstants.loginPhone),
-          ),
-          Text(
-            LocaleKeys.auth_phoneForm_phoneNumber.tr(),
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
-          ),
-          PhoneTextField(
-            controller: phoneController,
-            focusNode: focusNode,
-          ),
-          AuthCheckBoxTile(
-            text: const _ContractText(),
-            onChanged: onContract,
-            initValue: confirmContract,
-          ),
-          AuthCheckBoxTile(
-            text: const _ContactText(),
-            onChanged: onContact,
-            initValue: confirmContact,
-          ),
-          const Spacer(),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 28),
-            child: _ApproveText(),
-          ),
-          NextButton(onTap: onPhoneVerify),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Image.asset(ImageConstants.loginPhone),
+            ),
+            Text(
+              LocaleKeys.auth_phoneForm_phoneNumber.tr(),
+              style: Theme.of(context).textTheme.displayMedium,
+              textAlign: TextAlign.center,
+            ),
+            PhoneTextField(
+              controller: phoneController,
+              focusNode: focusNode,
+            ),
+            AuthCheckBoxTile(
+              text: const _ContractText(),
+              onChanged: onContract,
+              initValue: confirmContract,
+            ),
+            AuthCheckBoxTile(
+              text: const _ContactText(),
+              onChanged: onContact,
+              initValue: confirmContact,
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28),
+                    child: _ApproveText(),
+                  ),
+                  NextButton(onTap: onPhoneVerify),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
