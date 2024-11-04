@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:voxpollui/features/sub_features/bottom_sheets/user_bottom_sheet.dart';
 import 'package:voxpollui/features/sub_features/bottom_sheets/user_poll_bottom_sheet.dart';
 import 'package:voxpollui/product/initialize/localization/locale_keys.g.dart';
 import 'package:voxpollui/product/initialize/models/owner_model/community_model.dart';
@@ -77,7 +78,15 @@ final class OwnerTile extends StatelessWidget {
   }
 
   void showBottomSheet(BuildContext context) {
-    if (pollId == null) return;
+    if (pollId == null) {
+      context.showSheet<void>(
+        UserBottomSheet(
+          userName: owner.userName ?? '',
+          userId: owner.id,
+        ),
+      );
+      return;
+    }
     context.showSheet<void>(
       UserPollBottomSheet(
         userName: owner.userName ?? '',
