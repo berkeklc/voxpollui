@@ -111,8 +111,11 @@ final class CommunityService extends BaseService {
 
   ///Get Communities
   Future<List<CommunityModel>> getCommunities() async {
-    final response =
-        await db.collection(FireStoreCollections.communities.name).get();
+    final response = await db
+        .collection(FireStoreCollections.communities.name)
+        .where('recomended', isEqualTo: true)
+        .limit(5)
+        .get();
     final communityList = response.docs
         .map((e) => CommunityModel.fromJson(e.data(), e.id))
         .toList();
