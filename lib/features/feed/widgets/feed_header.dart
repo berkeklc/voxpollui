@@ -36,10 +36,10 @@ class FeedHeader extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          IconButton(
-            icon: IconConstants.notification.toIcon,
-            onPressed: () {},
-          ),
+          // IconButton(
+          //   icon: IconConstants.notification.toIcon,
+          //   onPressed: () {},
+          // ),
           GestureDetector(
             onTap: onDrawerTap,
             child: CircleAvatar(
