@@ -50,13 +50,13 @@ final class DiscoverService extends BaseService {
     try {
       final response = await db
           .collection(FireStoreCollections.polls.name)
+          .where(FireStoreFields.isPublic.name, isEqualTo: true)
           .where(
             FireStoreFields.searchIndex.name,
             arrayContainsAny: generateSearchIndex(keyword),
           )
           .limit(5)
           .get();
-
       return response.docs
           .map((e) => PollModel.fromJson(e.data(), e.id))
           .toList();

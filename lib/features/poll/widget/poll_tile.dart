@@ -85,9 +85,18 @@ final class _PollTile extends StatelessWidget {
         ExtendedElevatedButton(
           onPressed: () => PollDetailsRoute(PollExtra(poll: poll, owner: owner))
               .push<void>(context),
-          text: LocaleKeys.base_join.tr(),
+          text: buttonText,
         ),
       ],
     );
+  }
+
+  String get buttonText {
+    final join = LocaleKeys.base_join.tr();
+    final results = LocaleKeys.base_results.tr();
+    final date = poll.endAt;
+    if (date == null) return join;
+    if (DateTime.now().isAfter(date)) return results;
+    return join;
   }
 }

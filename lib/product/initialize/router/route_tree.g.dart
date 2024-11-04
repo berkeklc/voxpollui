@@ -21,6 +21,7 @@ List<RouteBase> get $appRoutes => [
       $documentReaderRoute,
       $userProfileRoute,
       $userProfileEditRoute,
+      $feedUnvotedListRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -445,6 +446,33 @@ extension $UserProfileEditRouteExtension on UserProfileEditRoute {
 
   String get location => GoRouteData.$location(
         '/userProfile/edit',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
+}
+
+RouteBase get $feedUnvotedListRoute => GoRouteData.$route(
+      path: '/feed/unvoted',
+      factory: $FeedUnvotedListRouteExtension._fromState,
+    );
+
+extension $FeedUnvotedListRouteExtension on FeedUnvotedListRoute {
+  static FeedUnvotedListRoute _fromState(GoRouterState state) =>
+      FeedUnvotedListRoute(
+        state.extra as List<PollModel>,
+      );
+
+  String get location => GoRouteData.$location(
+        '/feed/unvoted',
       );
 
   void go(BuildContext context) => context.go(location, extra: $extra);

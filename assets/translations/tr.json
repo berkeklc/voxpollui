@@ -69,7 +69,10 @@
         "title": "Akış",
         "createPoll": "Anket Oluştur",
         "polls": "Anketler",
-        "hello": "Merhaba, "
+        "hello": "Merhaba, ",
+        "unvotedPolls": "Cevaplanmamış Anketiniz Var",
+        "yourFollows": "Takip Ettikleriniz",
+        "waitingPolls": "Cevap Bekleyen Anketler"
     },
     "profile": {
         "title": "Profil",

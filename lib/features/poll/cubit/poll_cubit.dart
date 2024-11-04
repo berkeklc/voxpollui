@@ -11,6 +11,10 @@ final class PollCubit extends Cubit<PollState> {
     emit(state.copyWith(isLoading: true));
     final categoryList = await _pollService.getPollCategories();
     final polls = await _pollService.getFeedPolls(followIds);
+    polls.sort(
+      (a, b) => (b.createdAt ?? DateTime(2000))
+          .compareTo(a.createdAt ?? DateTime(2000)),
+    );
     emit(
       state.copyWith(
         isLoading: false,

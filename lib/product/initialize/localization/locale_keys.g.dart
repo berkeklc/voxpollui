@@ -66,6 +66,9 @@ abstract class  LocaleKeys {
   static const feed_createPoll = 'feed.createPoll';
   static const feed_polls = 'feed.polls';
   static const feed_hello = 'feed.hello';
+  static const feed_unvotedPolls = 'feed.unvotedPolls';
+  static const feed_yourFollows = 'feed.yourFollows';
+  static const feed_waitingPolls = 'feed.waitingPolls';
   static const feed = 'feed';
   static const profile_title = 'profile.title';
   static const profile_following = 'profile.following';

@@ -92,6 +92,7 @@ final class PollService extends BaseService {
   }
 
   ///Check If User Voted
+  ///Returns optionId if user voted, null if not
   Future<String?> checkIfUserVoted({
     required String pollId,
     required String userId,

@@ -42,4 +42,5 @@ enum FireStoreFields {
   searchIndex,
   createdAt,
   categoryId,
+  isPublic
 }

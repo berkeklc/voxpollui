@@ -42,3 +42,14 @@ class UserProfileEditRoute extends GoRouteData {
     return TPage(child: ProfileEditView(user: $extra));
   }
 }
+
+@TypedGoRoute<FeedUnvotedListRoute>(path: FeedUnvotedListRoute.path)
+class FeedUnvotedListRoute extends GoRouteData {
+  const FeedUnvotedListRoute(this.$extra);
+  static const String path = '/feed/unvoted';
+  final List<PollModel> $extra;
+  @override
+  TPage buildPage(BuildContext context, GoRouterState state) {
+    return TPage(child: FeedUnvotedList(unvotedList: $extra));
+  }
+}
