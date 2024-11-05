@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:voxpollui/features/authentication/cubit/auth_cubit.dart';
 import 'package:voxpollui/product/initialize/localization/locale_keys.g.dart';
+import 'package:voxpollui/product/services/firebase/follower_service.dart';
 import 'package:voxpollui/product/utils/constants/font_constants.dart';
 import 'package:voxpollui/product/utils/constants/icon_constants.dart';
 
@@ -17,9 +20,13 @@ final class UserPollBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localUserId = context.read<AuthCubit>().state.user?.id;
+    if (localUserId == null) return const SizedBox.shrink();
     return FutureBuilder(
-      future: Future.delayed(Durations.medium1),
+      future: FollowerService()
+          .isFollowing(localUserId: localUserId, targetUserId: userId),
       builder: (_, snapshop) {
+        final isFollowing = snapshop.data;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
@@ -41,8 +48,12 @@ final class UserPollBottomSheet extends StatelessWidget {
                 child: Divider(height: 1),
               ),
               _ActionTile(
-                title: LocaleKeys.sheet_xUnfollow.tr(args: [userName]),
-                leadingIcon: IconConstants.unfollow,
+                title: isFollowing == false
+                    ? LocaleKeys.sheet_xFollow.tr(args: [userName])
+                    : LocaleKeys.sheet_xUnfollow.tr(args: [userName]),
+                leadingIcon: isFollowing == false
+                    ? IconConstants.follow
+                    : IconConstants.unfollow,
                 onTap: () {},
               ),
               // _ActionTile(

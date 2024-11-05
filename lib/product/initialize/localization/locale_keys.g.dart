@@ -164,6 +164,7 @@ abstract class  LocaleKeys {
   static const sheet_sharePoll = 'sheet.sharePoll';
   static const sheet_reportPoll = 'sheet.reportPoll';
   static const sheet_xUnfollow = 'sheet.xUnfollow';
+  static const sheet_xFollow = 'sheet.xFollow';
   static const sheet_xBlock = 'sheet.xBlock';
   static const sheet_xReport = 'sheet.xReport';
   static const sheet_xMute = 'sheet.xMute';

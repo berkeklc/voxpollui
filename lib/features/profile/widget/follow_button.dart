@@ -79,7 +79,7 @@ class _FollowButtonState extends State<FollowButton> {
             margin: PagePaddings.horL,
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(15),
               border: Border.all(
                 color: isFollowing ? AppColor.black : AppColor.white,
               ),
