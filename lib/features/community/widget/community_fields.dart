@@ -57,7 +57,7 @@ final class _CommunityImageHeader extends StatelessWidget {
                 // context.showSheet();
               },
               style: ButtonStyle(
-                // backgroundColor: WidgetStateProperty.all(Colors.white),
+                backgroundColor: WidgetStateProperty.all(Colors.white),
                 shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(
                     side: const BorderSide(color: AppColor.borderColor),
@@ -72,7 +72,7 @@ final class _CommunityImageHeader extends StatelessWidget {
                 icon: IconConstants.settings.toIcon,
                 onPressed: onEdit,
                 style: ButtonStyle(
-                  // backgroundColor: WidgetStateProperty.all(Colors.white),
+                  backgroundColor: WidgetStateProperty.all(Colors.white),
                   shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
                       side: const BorderSide(color: AppColor.borderColor),

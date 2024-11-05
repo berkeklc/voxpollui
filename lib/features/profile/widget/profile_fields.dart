@@ -49,10 +49,11 @@ final class _ProfileImageHeader extends StatelessWidget {
               IconButton(
                 padding: PagePaddings.allXS,
                 icon: IconConstants.settings.toCustomIcon(
-                  color: AppColor.white,
+                  color: AppColor.opposite,
                 ),
                 onPressed: () => UserProfileEditRoute(user).push<void>(context),
                 style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(AppColor.white),
                   shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
                       side: const BorderSide(color: AppColor.borderColor),

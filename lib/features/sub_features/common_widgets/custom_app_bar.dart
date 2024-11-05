@@ -35,9 +35,10 @@ final class CustomAppBar extends AppBar {
               ? IconButton(
                   padding: PagePaddings.allXS,
                   icon: IconConstants.arrowBack.toIcon,
-                  color: Colors.black,
+                  color: AppColor.opposite,
                   onPressed: () => context.pop(),
                   style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(AppColor.white),
                     shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
                         side: const BorderSide(
